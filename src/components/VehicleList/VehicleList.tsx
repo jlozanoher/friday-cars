@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Vehicle from "../../models/vehicle.model";
-import { fetchVehicles, selectAllVehicles } from "../../slices/vehicle.slice";
+import {
+  fetchVehicles,
+  selectAllVehicles,
+  setDetailsOpen,
+} from "../../slices/vehicle.slice";
 import { Modal } from "../Commons/Modal";
 import { Result } from "../Commons/Result";
 import { Center } from "../Commons/Result/styles";
@@ -18,7 +22,6 @@ interface Props {
 const VehicleList = (props: Props) => {
   const { make, model } = props;
 
-  const [isOpen, setIsOpen] = useState(false);
   const [currentVehicle, setCurrentVehicle] = useState<Vehicle | undefined>(
     undefined
   );
@@ -32,6 +35,7 @@ const VehicleList = (props: Props) => {
     vehicles,
     search,
     selected: selectedVehicle,
+    detailsOpen,
   } = useSelector(selectAllVehicles);
 
   useEffect(() => {
@@ -53,7 +57,7 @@ const VehicleList = (props: Props) => {
   }, [vehicles, search]);
 
   const handleSelect = (vehicle: Vehicle) => {
-    setIsOpen(true);
+    dispatch(setDetailsOpen(true));
     setCurrentVehicle(vehicle);
   };
 
@@ -77,7 +81,10 @@ const VehicleList = (props: Props) => {
           />
         ))}
       </S.Container>
-      <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
+      <Modal
+        handleClose={() => dispatch(setDetailsOpen(false))}
+        isOpen={detailsOpen}
+      >
         {currentVehicle && (
           <VehicleDetails
             vehicle={currentVehicle}

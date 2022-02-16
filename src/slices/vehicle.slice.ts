@@ -8,6 +8,7 @@ interface VehicleState extends CommonState {
   vehicles: Vehicle[];
   search?: string;
   selected?: Vehicle;
+  detailsOpen?: boolean;
 }
 
 const initialState: VehicleState = {
@@ -34,6 +35,9 @@ export const vehicleSlice = createSlice({
     setVehicleSelected: (state, action: PayloadAction<Vehicle | undefined>) => {
       state.selected = action.payload;
     },
+    setDetailsOpen: (state, action: PayloadAction<boolean | undefined>) => {
+      state.detailsOpen = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -42,9 +46,9 @@ export const vehicleSlice = createSlice({
       })
       .addCase(fetchVehicles.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.vehicles = action.payload.map((v: Vehicle) => ({
+        state.vehicles = action.payload.map((v: Vehicle, i: number) => ({
           ...v,
-          id: Math.trunc(Math.random() * 1e8),
+          id: i,
         }));
       })
       .addCase(fetchVehicles.rejected, (state, action) => {
@@ -54,7 +58,8 @@ export const vehicleSlice = createSlice({
   },
 });
 
-export const { setVehicleSearch, setVehicleSelected } = vehicleSlice.actions;
+export const { setVehicleSearch, setVehicleSelected, setDetailsOpen } =
+  vehicleSlice.actions;
 
 export const selectAllVehicles = (state: RootState) => state.vehicles;
 

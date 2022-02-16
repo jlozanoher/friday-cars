@@ -48,6 +48,7 @@ const Autocomplete = (props: Props) => {
         onClick={() => setIsComponentVisible(true)}
         placeholder={label || ""}
         disabled={disabled}
+        style={{ width: "100px" }}
       />
       {isComponentVisible && (
         <S.SuggestionContainer>
