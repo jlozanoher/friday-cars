@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Vehicle from "../../models/vehicle.model";
 import { fetchVehicles, selectAllVehicles } from "../../slices/vehicle.slice";
-import { HStack } from "../Commons/Containers/Containers";
+import { Modal } from "../Commons/Modal";
 import { Result } from "../Commons/Result";
 import { Center } from "../Commons/Result/styles";
 import { Spinner } from "../Commons/Spinner/Spinner";
 import VehicleCard from "../VehicleCard/VehicleCard";
+import VehicleDetails from "../VehicleDetails/VehicleDetails";
+import * as S from "./styles";
 
 interface Props {
   make?: string;
@@ -14,13 +17,45 @@ interface Props {
 
 const VehicleList = (props: Props) => {
   const { make, model } = props;
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentVehicle, setCurrentVehicle] = useState<Vehicle | undefined>(
+    undefined
+  );
+
   const dispatch = useDispatch();
 
-  const { status, vehicles } = useSelector(selectAllVehicles);
+  const [filteredVehicles, setFilteredVehicles] = useState<Vehicle[]>([]);
+
+  const {
+    status,
+    vehicles,
+    search,
+    selected: selectedVehicle,
+  } = useSelector(selectAllVehicles);
 
   useEffect(() => {
     dispatch(fetchVehicles({ make, model }));
   }, [make, model]);
+
+  useEffect(() => {
+    setFilteredVehicles(
+      vehicles.filter((v) =>
+        Object.values(v).some(
+          (i: string) =>
+            !search ||
+            (i &&
+              search &&
+              `${i}`.toLowerCase().includes(search?.toLocaleLowerCase()))
+        )
+      )
+    );
+  }, [vehicles, search]);
+
+  const handleSelect = (vehicle: Vehicle) => {
+    setIsOpen(true);
+    setCurrentVehicle(vehicle);
+  };
 
   if (status === "failed") return <Result status="error" />;
   if (status === "loading")
@@ -31,11 +66,26 @@ const VehicleList = (props: Props) => {
     );
 
   return (
-    <HStack>
-      {vehicles.map((v) => (
-        <VehicleCard vehicle={v} />
-      ))}
-    </HStack>
+    <>
+      <S.Container>
+        {filteredVehicles.map((v, i) => (
+          <VehicleCard
+            key={i}
+            vehicle={v}
+            onClick={handleSelect}
+            selected={selectedVehicle?.id === v.id}
+          />
+        ))}
+      </S.Container>
+      <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
+        {currentVehicle && (
+          <VehicleDetails
+            vehicle={currentVehicle}
+            selected={currentVehicle.id === selectedVehicle?.id}
+          />
+        )}
+      </Modal>
+    </>
   );
 };
 

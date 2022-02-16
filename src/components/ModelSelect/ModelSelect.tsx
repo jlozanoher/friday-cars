@@ -35,6 +35,7 @@ const ModelSelect = (props: Props) => {
       label="Model"
       options={models.map((model) => model.name)}
       onSelect={handleSelect}
+      disabled={!make}
     />
   );
 };

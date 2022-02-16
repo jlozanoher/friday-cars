@@ -1,23 +1,30 @@
+import cs from "classnames";
 import React from "react";
+import { useDispatch } from "react-redux";
 import Vehicle from "../../models/vehicle.model";
+import { setVehicleSelected } from "../../slices/vehicle.slice";
 import { HStack, VStack } from "../Commons/Containers/Containers";
+import { Center } from "../Commons/Result/styles";
 import CarIcon from "./car-icon.png";
 import * as S from "./styles";
-import cs from "classnames";
 
 interface Props {
   vehicle: Vehicle;
-  onClick?: (vehicle: Vehicle) => void;
   selected?: boolean;
 }
 
-const VehicleCard = (props: Props) => {
-  const { vehicle: v, onClick = () => {}, selected } = props;
+const VehicleDetails = (props: Props) => {
+  const { vehicle: v, selected } = props;
 
-  const handleClick = () => onClick(v);
+  const dispatch = useDispatch();
+
+  const handleSelect = () => {
+    const r = !selected ? v : undefined;
+    dispatch(setVehicleSelected(r));
+  };
 
   return (
-    <S.Card onClick={handleClick} className={cs({ selected: selected })}>
+    <div>
       <S.Img src={CarIcon} alt={"car-icon"} />
       <HStack>
         <S.Title>{v.make}</S.Title>
@@ -40,8 +47,14 @@ const VehicleCard = (props: Props) => {
           <small>Fuel type: {v.fuelType}</small>
         </div>
       </VStack>
-    </S.Card>
+      <div style={{ height: "20px" }} />
+      <Center>
+        <S.SelectBtn className={cs({ red: selected })} onClick={handleSelect}>
+          {selected ? "Unselect" : "Select"}
+        </S.SelectBtn>
+      </Center>
+    </div>
   );
 };
 
-export default VehicleCard;
+export default VehicleDetails;

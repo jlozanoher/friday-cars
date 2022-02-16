@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../app/store";
-import Model from "../models/model.model";
 import Vehicle from "../models/vehicle.model";
 import { VehicleService } from "../services";
 import { CommonState } from "./CoreTypes";
@@ -8,6 +7,7 @@ import { CommonState } from "./CoreTypes";
 interface VehicleState extends CommonState {
   vehicles: Vehicle[];
   search?: string;
+  selected?: Vehicle;
 }
 
 const initialState: VehicleState = {
@@ -31,6 +31,9 @@ export const vehicleSlice = createSlice({
     setVehicleSearch: (state, action: PayloadAction<string | undefined>) => {
       state.search = action.payload;
     },
+    setVehicleSelected: (state, action: PayloadAction<Vehicle | undefined>) => {
+      state.selected = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -39,7 +42,10 @@ export const vehicleSlice = createSlice({
       })
       .addCase(fetchVehicles.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.vehicles = action.payload;
+        state.vehicles = action.payload.map((v: Vehicle) => ({
+          ...v,
+          id: Math.trunc(Math.random() * 1e8),
+        }));
       })
       .addCase(fetchVehicles.rejected, (state, action) => {
         state.status = "failed";
@@ -48,7 +54,7 @@ export const vehicleSlice = createSlice({
   },
 });
 
-export const {} = vehicleSlice.actions;
+export const { setVehicleSearch, setVehicleSelected } = vehicleSlice.actions;
 
 export const selectAllVehicles = (state: RootState) => state.vehicles;
 

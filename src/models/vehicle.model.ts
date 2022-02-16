@@ -1,4 +1,5 @@
 export default interface Vehicle {
+  id: string; // Only for frontend purposes
   make: string; // the make of the car
   model: string; // the model of the car
   enginePowerPS: number; // engine power in Horsepower units

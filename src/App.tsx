@@ -7,6 +7,7 @@ import { Main } from "./components/Commons/Main";
 import MakeSelect from "./components/MakeSelect/MakeSelect";
 import ModelSelect from "./components/ModelSelect/ModelSelect";
 import VehicleList from "./components/VehicleList/VehicleList";
+import { VehicleSearch } from "./components/VehicleSearch";
 
 function App() {
   const selectedMake = useSelector((state: RootState) => state.makes.selected);
@@ -19,6 +20,7 @@ function App() {
       <Header>
         <MakeSelect />
         <ModelSelect make={selectedMake?.name} />
+        <VehicleSearch />
       </Header>
       <Main>
         <VehicleList make={selectedMake?.name} model={selectedModel?.name} />

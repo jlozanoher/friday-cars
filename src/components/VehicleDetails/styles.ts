@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Card as CardParent } from "../Commons/Card";
 
 export const Title = styled.div`
   font-size: 20px;
@@ -13,12 +12,18 @@ export const SubTitle = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 150px;
-  margin: 8px;
+  width: 250px;
+  margin: 16px 8px;
 `;
 
-export const Card = styled(CardParent)`
-  &.selected {
-    box-shadow: 0 0 11px rgb(12 80 1 / 40%);
+export const SelectBtn = styled.div`
+  padding: 8px;
+  background: #1b875a;
+  border-radius: 4px;
+  font-weight: 400;
+  cursor: pointer;
+
+  &.red {
+    background: #b54124;
   }
 `;

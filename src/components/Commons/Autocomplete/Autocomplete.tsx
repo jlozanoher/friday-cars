@@ -7,10 +7,11 @@ interface Props {
   label?: string;
   options?: string[];
   onSelect?: (s: string) => void;
+  disabled?: boolean;
 }
 
 const Autocomplete = (props: Props) => {
-  const { options = [], label, onSelect = () => {} } = props;
+  const { options = [], label, onSelect = () => {}, disabled } = props;
 
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(true);
@@ -46,6 +47,7 @@ const Autocomplete = (props: Props) => {
         value={value}
         onClick={() => setIsComponentVisible(true)}
         placeholder={label || ""}
+        disabled={disabled}
       />
       {isComponentVisible && (
         <S.SuggestionContainer>
