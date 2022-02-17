@@ -2,7 +2,7 @@ import cs from "classnames";
 import React from "react";
 import { useDispatch } from "react-redux";
 import Vehicle from "../../models/vehicle.model";
-import { setVehicleSelected } from "../../slices/vehicle.slice";
+import { setVehicleSelected } from "../../slices";
 import { HStack, VStack } from "../Commons/Containers/Containers";
 import { Center } from "../Commons/Result/styles";
 import CarIcon from "./car-icon.png";
@@ -24,7 +24,7 @@ const VehicleDetails = (props: Props) => {
   };
 
   return (
-    <div>
+    <div data-testid={`VehicleDetails${v.id}`}>
       <S.Img src={CarIcon} alt={"car-icon"} />
       <HStack>
         <S.Title>{v.make}</S.Title>

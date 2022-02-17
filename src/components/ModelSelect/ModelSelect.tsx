@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchModels,
-  selectAllModels,
-  setModelSelected,
-} from "../../slices/model.slice";
+import { fetchModels, selectAllModels, setModelSelected } from "../../slices";
 import { Autocomplete } from "../Commons/Autocomplete";
 import { Result } from "../Commons/Result";
 import { Spinner } from "../Commons/Spinner/Spinner";

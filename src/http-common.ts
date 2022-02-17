@@ -2,7 +2,7 @@ import axios from "axios";
 import axiosRetry from "axios-retry";
 
 const client = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: `${process.env.REACT_APP_SERVER_URL}api`,
   headers: {
     "Content-type": "application/json",
   },

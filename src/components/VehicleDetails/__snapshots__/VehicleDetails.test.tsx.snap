@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VehicleDetails should match snap VehicleDetails normal 1`] = `
+<div
+  data-testid="VehicleDetails1"
+>
+  <img
+    alt="car-icon"
+    className="sc-jRQBWg cILbES"
+    src="car-icon.png"
+  />
+  <div
+    className="sc-bdvvtL iuoSCa"
+  >
+    <div
+      className="sc-hKwDye dMJKKO"
+    >
+      BMW
+    </div>
+    <div
+      className="sc-eCImPb impPDT"
+    >
+      3er
+    </div>
+  </div>
+  <div
+    className="sc-gsDKAQ kkVWFs"
+  >
+    <div>
+      <small>
+        Body type: 
+        Kombi
+      </small>
+    </div>
+    <div>
+      <small>
+        Engine capacity: 
+        1995
+         cc
+      </small>
+    </div>
+    <div>
+      <small>
+        Power (Horsepower): 
+        190
+      </small>
+    </div>
+    <div>
+      <small>
+        Power (KiloWatts): 
+        300
+      </small>
+    </div>
+    <div>
+      <small>
+        Fuel type: 
+        Diesel
+      </small>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "height": "20px",
+      }
+    }
+  />
+  <div
+    className="sc-dkPtRN eZSDIs"
+  >
+    <div
+      className="sc-gKclnd dqrdbM"
+      onClick={[Function]}
+    >
+      Select
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VehicleDetails should match snap VehicleDetails selected 1`] = `
+<div
+  data-testid="VehicleDetails1"
+>
+  <img
+    alt="car-icon"
+    className="sc-jRQBWg cILbES"
+    src="car-icon.png"
+  />
+  <div
+    className="sc-bdvvtL iuoSCa"
+  >
+    <div
+      className="sc-hKwDye dMJKKO"
+    >
+      BMW
+    </div>
+    <div
+      className="sc-eCImPb impPDT"
+    >
+      3er
+    </div>
+  </div>
+  <div
+    className="sc-gsDKAQ kkVWFs"
+  >
+    <div>
+      <small>
+        Body type: 
+        Kombi
+      </small>
+    </div>
+    <div>
+      <small>
+        Engine capacity: 
+        1995
+         cc
+      </small>
+    </div>
+    <div>
+      <small>
+        Power (Horsepower): 
+        190
+      </small>
+    </div>
+    <div>
+      <small>
+        Power (KiloWatts): 
+        300
+      </small>
+    </div>
+    <div>
+      <small>
+        Fuel type: 
+        Diesel
+      </small>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "height": "20px",
+      }
+    }
+  />
+  <div
+    className="sc-dkPtRN eZSDIs"
+  >
+    <div
+      className="sc-gKclnd dqrdbM red"
+      onClick={[Function]}
+    >
+      Unselect
+    </div>
+  </div>
+</div>
+`;

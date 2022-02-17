@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../app/store";
-import Vehicle from "../models/vehicle.model";
-import { VehicleService } from "../services";
-import { CommonState } from "./CoreTypes";
+import { RootState } from "../../app/store";
+import Vehicle from "../../models/vehicle.model";
+import { VehicleService } from "../../services";
+import { CommonState } from "../CoreTypes";
 
 interface VehicleState extends CommonState {
   vehicles: Vehicle[];

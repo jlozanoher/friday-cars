@@ -17,7 +17,11 @@ const VehicleCard = (props: Props) => {
   const handleClick = () => onClick(v);
 
   return (
-    <S.Card onClick={handleClick} className={cs({ selected: selected })}>
+    <S.Card
+      onClick={handleClick}
+      className={cs({ selected: selected })}
+      data-testid={`Vehicle${v.id}`}
+    >
       <S.Img src={CarIcon} alt={"car-icon"} />
       <HStack>
         <S.Title>{v.make}</S.Title>

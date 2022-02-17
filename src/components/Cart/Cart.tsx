@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectAllVehicles, setDetailsOpen } from "../../slices/vehicle.slice";
+import { selectAllVehicles, setDetailsOpen } from "../../slices";
 import { Badge } from "../Commons/Badge";
 import CartIcon from "./cart-icon.png";
 import * as S from "./styles";
@@ -15,7 +15,7 @@ const Cart = () => {
   return (
     <S.CartContainer onClick={handleClick}>
       <S.Img src={CartIcon} alt="car-icon" />
-      {selected && <Badge />}
+      {selected && <Badge data-testid={`Badge`} />}
     </S.CartContainer>
   );
 };

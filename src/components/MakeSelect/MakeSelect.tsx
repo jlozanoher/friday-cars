@@ -4,8 +4,8 @@ import {
   fetchMakes,
   selectAllMakes,
   setMakeSelected,
-} from "../../slices/make.slice";
-import { setModelSelected } from "../../slices/model.slice";
+  setModelSelected,
+} from "../../slices";
 import { Autocomplete } from "../Commons/Autocomplete";
 import { Result } from "../Commons/Result";
 import { Spinner } from "../Commons/Spinner/Spinner";

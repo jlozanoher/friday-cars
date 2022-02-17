@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../app/store";
-import Make from "../models/make.model";
-import { MakeService } from "../services";
-import { CommonState } from "./CoreTypes";
+import type { RootState } from "../../app/store";
+import Make from "../../models/make.model";
+import { MakeService } from "../../services";
+import { CommonState } from "../CoreTypes";
 
 interface MakeState extends CommonState {
   makes: Make[];

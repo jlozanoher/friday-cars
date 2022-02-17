@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Vehicle from "../../models/vehicle.model";
-import {
-  fetchVehicles,
-  selectAllVehicles,
-  setDetailsOpen,
-} from "../../slices/vehicle.slice";
+import { fetchVehicles, selectAllVehicles, setDetailsOpen } from "../../slices";
 import { Modal } from "../Commons/Modal";
 import { Result } from "../Commons/Result";
 import { Center } from "../Commons/Result/styles";

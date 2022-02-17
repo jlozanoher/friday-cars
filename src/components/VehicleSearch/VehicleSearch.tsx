@@ -1,9 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { executeWithDebounce } from "../../helpers/debounce";
-import { selectAllMakes } from "../../slices/make.slice";
-import { selectAllModels } from "../../slices/model.slice";
-import { setVehicleSearch } from "../../slices/vehicle.slice";
+import {
+  selectAllMakes,
+  selectAllModels,
+  setVehicleSearch,
+} from "../../slices";
 import { Input } from "../Commons/Input";
 
 const VehicleSearch = () => {
@@ -12,6 +14,7 @@ const VehicleSearch = () => {
   const { selected: make } = useSelector(selectAllMakes);
   const { selected: model } = useSelector(selectAllModels);
 
+  // Using a debounce for preventing to fire multiple renders
   const handleChange = (e: any) =>
     executeWithDebounce(() => {
       dispatch(setVehicleSearch(e.target.value));

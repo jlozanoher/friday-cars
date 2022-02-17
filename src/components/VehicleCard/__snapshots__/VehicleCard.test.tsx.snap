@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VehicleCard should match snap 1`] = `
+<div
+  className="sc-gsDKAQ sc-dkPtRN sc-gKclnd kkVWFs hZpHlw jkCszs"
+  data-testid="Vehicle1"
+  onClick={[Function]}
+>
+  <img
+    alt="car-icon"
+    className="sc-jRQBWg flbqtC"
+    src="car-icon.png"
+  />
+  <div
+    className="sc-bdvvtL iuoSCa"
+  >
+    <div
+      className="sc-hKwDye dMJKKO"
+    >
+      BMW
+    </div>
+    <div
+      className="sc-eCImPb impPDT"
+    >
+      3er
+    </div>
+  </div>
+  <div
+    className="sc-gsDKAQ kkVWFs"
+  >
+    <div>
+      <small>
+        Body type: 
+        Kombi
+      </small>
+    </div>
+    <div>
+      <small>
+        Engine capacity: 
+        1995
+         cc
+      </small>
+    </div>
+    <div>
+      <small>
+        Power (Horsepower): 
+        190
+      </small>
+    </div>
+    <div>
+      <small>
+        Power (KiloWatts): 
+        300
+      </small>
+    </div>
+    <div>
+      <small>
+        Fuel type: 
+        Diesel
+      </small>
+    </div>
+  </div>
+</div>
+`;
